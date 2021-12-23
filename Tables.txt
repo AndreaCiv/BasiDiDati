@@ -1,0 +1,80 @@
+create table Scaffale(codice tinyint unsigned primary key);
+create table Posizione(codice tinyint unsigned not null, numeroFaldone smallint unsigned not null, primary key (codice, numeroFaldone), foreign key(codice) references Scaffale(codice), foreign key(numeroFaldone) references Faldone(numero));
+create table Faldone(numero smallint unsigned primary key, dataInizio date not null, dataFine date not null);
+create table Fascicolo(codiceIdentificativo smallint unsigned primary key, annoChiusura year, nomeGiudice varchar(30) not null, tipoGiudice varchar(15) not null check (tipoGiudice = 'amministrativo' or tipoGiudice = 'civile' or tipoGiudice = 'penale'), presenza char(2) not null check( presenza = 'si' or presenza='no'));
+create table Inserimento(numeroFaldone smallint unsigned not null, idFascicolo smallint unsigned not null, primary key(numeroFaldone, idFascicolo), foreign key (numeroFaldone) references Faldone(numero), foreign key (idFascicolo) references Fascicolo(codiceIdentificativo));
+create table Documento(nome varchar(20) not null, idFascicolo smallint unsigned not null, descrizione varchar(140), numeroProtocollo char(8), primary key (nome, idFascicolo), foreign key (idFascicolo) references Fascicolo(codiceIdentificativo));
+create table ClienteFisico(
+    -> codiceFiscale char(16) primary key,
+    -> nome varchar(15) not null,
+    -> cognome varchar(15) not null,
+    -> dataNascita date not null,
+    -> luogoNascita varchar(20) not null,
+    -> citta varchar(20) not null, via varchar(50) not null, numeroCivico smallint unsigned, cap mediumint unsigned not null, email varchar(40) not null, telefono varchar(15) not null, numeroContratti tinyint unsigned not null);
+ create table Avvocato( codiceFiscale char(16) primary key, nome varchar(15) not null, cognome varchar(15) not null, dataNascita date not null, email varchar(40) not null, pec varchar(40) not null, partitaIVA char(11) not null check( partitaIVA like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'), numPolizza varchar(20) not null, maxPolizza int not null);
+
+create table ClienteGiuridico(
+    -> partitaIVA char(11) primary key check( partitaIVA like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
+    -> nomeAzienda varchar(40) not null,
+    -> cittaRegistro varchar(20) not null,
+    -> ragioneSociale varchar(100) not null,
+    -> via varchar(50) not null,
+    -> citta varchar(20) not null,
+    -> numeroCivico smallint unsigned,
+    -> cap mediumint unsigned not null,
+    -> email varchar(40) not null,
+    -> telefono varchar(15) not null,
+    -> numeroContratti tinyint unsigned not null);
+
+create table Contratto(
+    -> oggetto varchar(100) not null,
+    -> data date not null,
+    -> attore varchar(30) not null,
+    -> convenuto varchar(30) not null,
+    -> valore mediumint unsigned not null,
+    -> foro varchar(20) not null,
+    -> acconto decimal(8,2) unsigned not null,
+    -> saldo decimal(8,2) unsigned not null,
+    -> primary key (oggetto, data),
+    -> check(attore = 'cliente' or convenuto = 'cliente'));
+
+create table StipulazioneClienteGiuridico(
+    -> oggettoContratto varchar(100) not null,
+    -> dataContratto date not null,
+    -> CFAvvocato char(16) not null,
+    -> PIVACliente char(11) not null,
+    -> primary key(oggettoContratto, dataContratto, CFAvvocato, PIVACliente),
+    -> foreign key (oggettoContratto, dataContratto) references Contratto(oggetto, data),
+    -> foreign key (CFAvvocato) references Avvocato(codiceFiscale),
+    -> foreign key (PIVACliente) references ClienteGiuridico(partitaIVA));
+
+create table StipulazioneClienteFisico(
+    -> oggettoContratto varchar(100) not null,
+    -> dataContratto date not null,
+    -> CFAvvocato char(16) not null,
+    -> CFCliente char (16) not null,
+    -> primary key (oggettoContratto, dataContratto, CFAvvocato, CFCliente),
+    -> foreign key (oggettoContratto,  dataContratto) references Contratto(oggetto, data),
+    -> foreign key (CFAvvocato) references Avvocato(codiceFiscale),
+    -> foreign key (CFCliente) references ClienteFisico(codiceFiscale));
+
+create table Fattura(
+    -> numeroFattura smallint unsigned primary key,
+    -> IBAN char(27) not null,
+    -> dataPagamento date not null,
+    -> importoTotale decimal(8,2) not null);
+
+create table Pagamento(
+    -> oggettoContratto varchar(100) not null,
+    -> dataContratto date not null,
+    -> numeroFattura smallint unsigned not null,
+    -> primary key (oggettoContratto, dataContratto, numeroFattura),
+    -> foreign key (oggettoContratto, dataContratto) references Contratto(oggetto, data),
+    -> foreign key (numeroFattura) references Fattura(numeroFattura));
+
+create table Compenso(
+    -> numeroFattura smallint unsigned not null,
+    -> descrizione varchar(50) not null,
+    -> importo decimal(8,2) not null,
+    -> primary key (numeroFattura, descrizione),
+    -> foreign key (numeroFattura) references Fattura(numeroFattura));
