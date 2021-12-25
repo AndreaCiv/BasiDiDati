@@ -1,0 +1,48 @@
+MODIFICA CHECK FASICOLO CON ENUM
+alter table Fascicolo modify column presenza enum('si', 'no') not null;
+alter table Fascicolo modify column tipoGiudice enum('amministrativo', 'civile', 'penale') not null;
+alter table Fascicolo drop check fascicolo_chk_1;
+alter table Fascicolo drop check fascicolo_chk_2;
+
+MODIFICA COMPENSO
+alter table Compenso drop constraint compenso_ibfk_1;
+alter table Compenso add foreign key (numeroFattura) references Fattura(numeroFattura) on update cascade;
+
+MODIFICA DOCUMENTO
+alter table Documento drop constraint documento_ibfk_1;
+alter table Documento add foreign key (idFascicolo) references Fascicolo(codiceIdentificativo) on update cascade;
+
+MODIFICA INSERIMENTO
+alter table Inserimento drop constraint inserimento_ibfk_1;
+alter table Inserimento drop constraint inserimento_ibfk_2;
+alter table Inserimento add foreign key (numeroFaldone) references Faldone(numero) on update cascade;
+alter table Inserimento add foreign key (idFascicolo) references Fascicolo(codiceIdentificativo) on update cascade;
+
+MODIFICA PAGAMENTO
+alter table Pagamento drop constraint pagamento_ibfk_1;
+alter table Pagamento drop constraint pagamento_ibfk_2;
+alter table Pagamento add foreign key (oggettoContratto, dataContratto) references Contratto(oggetto, data) on update cascade;
+alter table Pagamento add foreign key (numeroFattura) references Fattura(numeroFattura) on update cascade;
+
+MODIFICA POSIZIONE
+alter table Posizione drop constraint posizione_ibfk_1;
+alter table Posizione drop constraint posizione_ibfk_2;
+alter table Posizione add foreign key (codice) references Scaffale(codice) on update cascade;
+alter table Posizione add foreign key (numeroFaldone) references Faldone(numero) on update cascade;
+
+MODIFICA STIPULAZIONECLIENTEFISICO
+alter table stipulazioneClienteFisico drop constraint stipulazioneclientefisico_ibfk_1;
+alter table stipulazioneClienteFisico drop constraint stipulazioneclientefisico_ibfk_2;
+alter table stipulazioneClienteFisico drop constraint stipulazioneclientefisico_ibfk_3;
+alter table stipulazioneClienteFisico add foreign key (oggettoContratto, dataContratto) references Contratto(oggetto, data) on update cascade;
+alter table stipulazioneClienteFisico add foreign key (CFAvvocato) references Avvocato(codiceFiscale) on update cascade;
+alter table stipulazioneClienteFisico add foreign key (CFCliente) references ClienteFisico(codiceFiscale) on update cascade;
+
+MODIFICA STIPULAZIONECLIENTEGIURIDICO
+alter table stipulazioneClienteGiuridico drop constraint stipulazioneclientegiuridico_ibfk_1;
+alter table stipulazioneClienteGiuridico drop constraint stipulazioneclientegiuridico_ibfk_2;
+alter table stipulazioneClienteGiuridico drop constraint stipulazioneclientegiuridico_ibfk_3;
+alter table stipulazioneclientegiuridico add foreign key (oggettoContratto, dataContratto) references Contratto(oggetto, data) on update cascade;
+alter table stipulazioneclientegiuridico add foreign key (CFAvvocato) references Avvocato(codiceFiscale) on update cascade;
+alter table stipulazioneclientegiuridico add foreign key (PIVACliente) references ClienteGiuridico(partitaIVA) on update cascade;
+
