@@ -46,3 +46,44 @@ alter table stipulazioneclientegiuridico add foreign key (oggettoContratto, data
 alter table stipulazioneclientegiuridico add foreign key (CFAvvocato) references Avvocato(codiceFiscale) on update cascade;
 alter table stipulazioneclientegiuridico add foreign key (PIVACliente) references ClienteGiuridico(partitaIVA) on update cascade;
 
+CHECK SULLA PARTITA IVA NON FUNZIONANO QUINDI:
+alter table clientegiuridico drop constraint clientegiuridico_chk_1;
+alter table Avvocato drop constraint avvocato_chk_1;
+
+INSERIMENTI CLIENTE GIURICO
+insert into clientegiuridico values( '68739487561', 'Autotrasporti s.r.l.', 'Pescara', 'Autotrasporti', 'Via della libertà', 'Montesilvano', 30, 65015, '08713435687', 'autotrasporti@autotrasporti.com', 0);
+insert into clientegiuridico values( '56879579081', 'Cantina sociale Ortona', 'Chieti', 'Cantina sociale', 'Via Roma', 'Ortona', 50, 66026, '0851234567', 'cantina@sociale.it', 0); 
+insert into Clientegiuridico (partitaIVA, nomeAzienda, cittaRegistro, ragioneSociale, via, citta, cap, telefono, email, numerocontratti) values( '09758637854', 'Cartolibreria', 'Teramo', 'Cartolibreria', 'Piazza plebiscito', 'Giulianova', 64021, '08764567982', 'cartolibreria@cartolibreria.it', 0);
+
+INSERIMENTI CLIENTE FISICO
+insert into clientefisico values( 'BNCGVN56M96E435J', 'Giovanni', 'Bianchi', '1984-08-22', 'Pescara', 'Pescara' ,'Viale bovio', 89, 65121, 'giovanni@bianchi.it', '3925874671', 0);
+insert into clientefisico values( 'RSSCRL78M87G141P', 'Carlo', 'Rossi', '1976-05-12', 'Teramo', 'Alba Adriatica' ,'Via 1 Maggio', 15, 69086, 'carlo@rossi.it', '3997658713', 0);
+
+INSERIMENTI AVVOCATI
+insert into avvocato values( 'RSSGBR78M56G569X' ,'Gabriele', 'Rossi', '1981-03-06', 'gabriele@rossi.it', 'gabriele@rossi.pec.it', '89762675910', '904875C78', '100000');insert into avvocato values( 'VRDSMN67M54H456K' ,'Simone', 'Verdi', '1975-03-21', 'simone@verdi.it', 'simone@verdi.pec.it', '78462985624', 'ALD457890', '100000');
+
+
+AGGIUNTA UNIQUE IN PARTITA IVA AVVOCATO
+alter table avvocato modify column partitaIVA char(11) not null unique;
+
+INSERIMENTO CONTRATTI
+insert into contratto values( 'risarcimento mancata consegna ordine', '2021-08-01', 'Luca Bianchi', 'cliente', 6000, 'Giulianova', 200.00, 300.00) ;
+insert into contratto values( 'risarcimento merce smarrita', '2021-05-22', 'cliente', 'Bartolini s.p.a.', 50000, 'Pescara', 1000.00, 3000.00) ;
+insert into contratto values( 'denuncia aggressione a pubblico ufficiale', '2020-03-27', 'comando polizia Pescara', 'cliente', 10000, 'Pescara', 1000.00, 1500.00) ;
+
+INSERIMENTO STIPULAZIONE CLIENTE GIURIDICO
+insert into stipulazioneclientegiuridico values( 'risarcimento mancata consegna ordine', '2021-08-01', 'RSSGBR78M56G569X', '09758637854');
+insert into stipulazioneclientegiuridico values( 'risarcimento merce smarrita','2021-05-22', 'VRDSMN67M54H456K', '68739487561');
+update clientegiuridico set numerocontratti=1 where partitaiva='68739487561' or partitaiva=09758637854;
+
+INSERIMENTO STIPULAZIONE CLIENTE FISICO
+insert into stipulazioneclientefisico values(  'denuncia aggressione a pubblico ufficiale',  '2020-03-27', 'VRDSMN67M54H456K', 'BNCGVN56M96E435J');
+update clientefisico set numerocontratti = 1 where codicefiscale='BNCGVN56M96E435J';
+
+INSERIMENTO SCAFFALI 
+insert into scaffale values(1);
+insert into scaffale values(2);
+insert into scaffale values(3);
+insert into scaffale values(4);
+
+
