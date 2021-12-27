@@ -1,0 +1,156 @@
+QUERY
+
+OPERAZIONE 1) INSERIMENTO NUOVO AVVOCATO
+insert into avvocato(codiceFiscale, nome, cognome, dataNascita, email, pec, partitaIVA, numPolizza, maxPolizza) values( 'RSSGBR78M56G569X' ,'Gabriele', 'Rossi', '1981-03-06', 'gabriele@rossi.it', 'gabriele@rossi.pec.it', '89762675910', '904875C78', '100000');
+
+OPERAZIONE 2) INSERIMENTO NUOVO CLIENTE
+CLIENTE FISICO
+insert into ClienteFisico(codiceFiscale, nome, cognome, dataNascita, luogoNascita, citta, via, numeroCivico, cap, email, telefono, numeroContratti) values( 'BNCGVN56M96E435J', 'Giovanni', 'Bianchi', '1984-08-22', 'Pescara', 'Pescara' ,'Viale bovio', 89, 65121, 'giovanni@bianchi.it', '3925874671', 0);
+CLIENTE GIURIDICO
+insert into ClienteFiuridico (partitaIVA, nomeAzienda, cittaRegistro, ragioneSociale, via, citta, numeroCivico, cap, telefono, email, numeroContratti) values( '09758637854', 'Cartolibreria', 'Teramo', 'Cartolibreria', 'Piazza plebiscito', 'Giulianova', 68, 64021, '08764567982', 'cartolibreria@cartolibreria.it', 0);
+
+OPERAZIONE 3) INSERIMENTO NUOVO SCAFFALE
+insert into scaffale values(1);
+
+OPERAZIONE 4) INSERIMENTO NUOVO FALDONE
+insert into Faldone (numero, dataInizio, dataFine) values (1, '2020-01-01', '2020-06-01');
+Insert into Posizione (codice, numeroFaldone) values ( codice dello scaffale in cui si trova il faldone, 1)
+
+OPERAZIONE 5) INSERIMENTO NUOVO FASCICOLO
+insert into Fascicolo (codiceIdentificativo, annoChiusura, nomeGiudice, tipoGiudice, presenza) values ( 1, '2020', 'Francesco Foti' , 'civile', 'si');
+insert into Referenza (idFascicolo, oggettoContratto, dataContratto) values (1, oggetto del contratto di riferimento, data del contratto di riferimento);
+insert into Inserimento (numeroFaldone, idFascicolo) values (numero del fadone in cui è inserito il fascicolo, 1);
+
+OPERAZIONE 6) INSERIMENTO DOCUMENTO
+insert into Documento (nome, idFascicolo, descrizione, numeroProtocollo) values ('verbale prima udienza', codice identificativo del fascicolo dove è inserito il documento, 'verbale prima udienza del 24-05-2021', 'ABCD1234');
+
+OPERAZIONE 7) INSERIMENTO FATTURA
+Insert into Fattura (numeroFattura, IBAN, dataPagamento, importoTotale) values (1, 'IT39DHJ7BHD1583HJKOLEWSLOI4', '2021-02-18', 500.00);
+Insert into Pagamento (oggettoContratto, dataContratto, numeroFattura) values (oggetto del contratto di riferimento, data del contratto di riferimento, 1);
+PER OGNI COMPENSO DELLA FATTURA INSERITA
+Insert into Compenso (numeroFattura, descrizione, importo) values (1, 'compenso netto', 500.00);
+
+OPERAZIONE 8) INSERIMENTO NUOVO CONTRATTO
+insert into contratto values( 'risarcimento mancata consegna ordine', '2021-08-01', 'Luca Bianchi', 'cliente', 6000, 'Giulianova', 200.00, 300.00) ;
+SE IL CONTRATTO è STIPULATO DA UN CLIENTE FISICO
+Insert into stipulazioneclientefisico (oggettocontratto, datacontratto, CFAvvocato, CFCliente) values ('risarcimento mancata consegna ordine', '2021-08-01', codice fiscale dell'avvocato con cui è stato stipulato il contratto, codice fiscale del cliente che ha stipulato il contratto);
+SE IL CONTRATTO è STATO STIPULATO DA UN CLIENTE GIURIDICO
+Insert into stipulazioneclientegiuridico (oggettocontratto, datacontratto, CFAvvocato, PIVACliente) values ('risarcimento mancata consegna ordine', '2021-08-01', codice fiscale dell'avvocato con cui è stato stipulato il contratto, partita iva del cliente con cui è stato stipulato il contratto);
+
+OPERAZIONE 9) CONSULTAZIONE SCAFFALE
+Select faldone.numero, falcon.dataInizio, faldone.dataFine
+From posizione, faldone
+Where posizione.codice = [codice dello scaffale da consultare] and posizione.numeroFAldone=faldone.numero;
+
+OPERAZIONE 10) CONSULTAZIONE DEI FALDONI
+Select fascicolo.codiceIdentificativo, fascicolo.annochiusura, fascicolo.nomegiudice, fascicolo. tipogiudice, fascicolo.presenza
+From inserimento, fascicolo
+Where inserimento.numerofaldone=[numero del faldone da consultare] and fascicolo.codiceidentificativo=inserimento.idFascicolo;
+
+OPERAZIONE 11) CONSULTAZIONE DEI FASCICOLI
+Select * from fascicolo;
+OPPURE
+Select * from fascicolo 
+where [attributo chiave di ricerca]=[valore dell'attributo];
+
+OPERAZIONE 12) CONSULTAZIONE DEI DOCUMENTI DI UN FASCICOLO
+Select documento.nome, documento.descrizione, documento.numeroProtocollo
+From documento
+Where documento.idFascicolo = [codice identificativo del fascicolo da consultare];
+
+OPERAZIONE 13) CONSULTAZIONE DI UN CONTRATTO
+Select * from contratto
+Where [attributo chiave di ricerca]=[valore dell'attributo];
+
+OPERAZIONE 14) CONSULTAZIONE DATI AVVOCATI
+Select * from avvocato
+Where [attributo chiave di ricerca]=[valore dell'attributo];
+
+OPERAZIONE 15) CONSULTAZIONE DATI CLIENTI
+CLIENTI FISICI
+Select * from clientefisico
+Where [attributo chiave di ricerca]=[valore dell'attributo];
+CLIENTI GIURIDICI
+Select * from clientegiuridico
+Where [attributo chiave di ricerca]=[valore dell'attributo];
+
+OPERAZIONE 16) CONSULTAZIONE DATI FATTURE
+TABELLA DI TUTTE LE FATTURE
+Select * from fattura
+Where [attributo chiave di ricerca]=[valore dell'attributo];
+SINGOLA FATTURA
+Select * from compenso
+Where compenso.numeroFattura = [numero della fattura da visualizzare];
+
+OPERAZIONE 17) VERIFICA PRESENZA NELL'ARCHIVIO DI UN FASCICOLO
+Select presenza
+From Fascicolo
+Where Fascicolo.codiceIdentificativo = [id del fascicolo di cui si vuole verificare la presenza];
+
+OPERAZIONE 18) MODIFICA DISPONIBILITà DI UN FASCICOLO
+Update Fascicolo 
+set presenza=['si', 'no']
+Where codiceidentificativo = [id del fascicolo di cui modificare la disponibilità];
+
+OPERAZIONE 19) MODIFICA DATI AVVOCATO
+Update Avvocato
+Set [attributo da modificare] = [nuovo valore dell'attributo]
+Where codiceFiscale = [codice fiscale dell'avvocato da modificare];
+
+OPERAZIONE 20) MODIFICA DATI CLIENTE
+CLIENTE FISICO
+Update clientefisico
+Set [attributo da modificare] = [nuovo valore dell'attributo]
+Where codiceFiscale = [codice fiscale dell cliente da modificare];
+CLIENTE GIURIDICO
+Update clientegiuridico
+Set [attributo da modificare] = [nuovo valore dell'attributo]
+Where PartitaIVA = [partita IVA del cliente da modificare];
+
+OPERAZIONE 21) MODIFICA DATI DOCUMENTO
+Update documento
+Set [attributo da modificare] = [nuovo valore dell'attributo]
+Where nome=[nome del documento da modificare] and idFascicolo = [codice identificativo del fascicolo che contiene il documento da modificare];
+
+OPERAZIONE 22) 
+
+
+
+METTERE TUTTI I DELETE CHE ADESSO NON HO SBATTI
+
+
+
+OPERAZIONE 29) 
+
+OPERAZIONE 30) VISUALIZZAZIONE INCASSI IN BASE AL PERIODO
+Select sum(fattura.importototale)
+From fattura
+Where fattura.datapagamento between [data inizio periodo di interesse] and [data fine periodo di interesse];
+
+OPERAZIONE 31) VERIFICA PRESENZA E IMPORTO DI UNA FATTURA RELATIVA AD UN PROCESSO
+VERIFICA ACCONTO
+Select contratto.acconto in(
+		Select fattura.importototale
+		From pagamento, fattura
+		Where pagamento.oggettocontratto = [oggetto del contratto del quale si vogliono verificare i 				    pagamenti] and pagamento.datacontratto = [data del contratto del quale si vogliono verificare i pagamenti] and 	pagamento.numeroFattura = fattura.NumeroFattura)
+From contratto
+Where contratto.oggetto=[oggetto del contratto del quale si vogliono verificare i 				    pagamenti] and contratto.data = [data del contratto del quale si vogliono verificare i pagamenti];
+
+VERIFICA SALDO
+Select contratto.saldo in(
+		Select fattura.importototale
+		From pagamento, fattura
+		Where pagamento.oggettocontratto = [oggetto del contratto del quale si vogliono verificare i 				    pagamenti] and pagamento.datacontratto = [data del contratto del quale si vogliono verificare i pagamenti] and 	pagamento.numeroFattura = fattura.NumeroFattura)
+From contratto
+Where contratto.oggetto=[oggetto del contratto del quale si vogliono verificare i 				    pagamenti] and contratto.data = [data del contratto del quale si vogliono verificare i pagamenti];
+
+OPERAZIONE 32) VISUALIZZAZIONE NUMERO CONTRATTI DI UN CLIENTE
+CLIENTE FISICO
+Select numerocontratti
+From clientefisico
+Where codiceFiscale = [codice fiscale del cliente interessato];
+
+CLIENTE GIURIDICO
+Select numerocontratti
+From clientegiuridico
+Where partitaIVA = [partita iva del cliente interessato];

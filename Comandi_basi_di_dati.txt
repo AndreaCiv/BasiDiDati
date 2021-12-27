@@ -60,7 +60,8 @@ insert into clientefisico values( 'BNCGVN56M96E435J', 'Giovanni', 'Bianchi', '19
 insert into clientefisico values( 'RSSCRL78M87G141P', 'Carlo', 'Rossi', '1976-05-12', 'Teramo', 'Alba Adriatica' ,'Via 1 Maggio', 15, 69086, 'carlo@rossi.it', '3997658713', 0);
 
 INSERIMENTI AVVOCATI
-insert into avvocato values( 'RSSGBR78M56G569X' ,'Gabriele', 'Rossi', '1981-03-06', 'gabriele@rossi.it', 'gabriele@rossi.pec.it', '89762675910', '904875C78', '100000');insert into avvocato values( 'VRDSMN67M54H456K' ,'Simone', 'Verdi', '1975-03-21', 'simone@verdi.it', 'simone@verdi.pec.it', '78462985624', 'ALD457890', '100000');
+insert into avvocato values( 'RSSGBR78M56G569X' ,'Gabriele', 'Rossi', '1981-03-06', 'gabriele@rossi.it', 'gabriele@rossi.pec.it', '89762675910', '904875C78', '100000');
+insert into avvocato values( 'VRDSMN67M54H456K' ,'Simone', 'Verdi', '1975-03-21', 'simone@verdi.it', 'simone@verdi.pec.it', '78462985624', 'ALD457890', '100000');
 
 
 AGGIUNTA UNIQUE IN PARTITA IVA AVVOCATO
