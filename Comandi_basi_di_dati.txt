@@ -62,6 +62,8 @@ insert into clientefisico values( 'RSSCRL78M87G141P', 'Carlo', 'Rossi', '1976-05
 INSERIMENTI AVVOCATI
 insert into avvocato values( 'RSSGBR78M56G569X' ,'Gabriele', 'Rossi', '1981-03-06', 'gabriele@rossi.it', 'gabriele@rossi.pec.it', '89762675910', '904875C78', '100000');
 insert into avvocato values( 'VRDSMN67M54H456K' ,'Simone', 'Verdi', '1975-03-21', 'simone@verdi.it', 'simone@verdi.pec.it', '78462985624', 'ALD457890', '100000');
+-----------------------------------------------------------------------------------------
+insert into avvocato values( 'NREGLI80R63G482C' ,'Giulia', 'Neri', '1980-10-25', 'giulia@neri.it', 'giulia@neri.pec.it', '12340987543', '4352GUE123', '100000');
 
 
 AGGIUNTA UNIQUE IN PARTITA IVA AVVOCATO
@@ -87,4 +89,19 @@ insert into scaffale values(2);
 insert into scaffale values(3);
 insert into scaffale values(4);
 
+INSERIMENTO FATTURE
+insert into fattura values(12, 'IT1234567890000001234567897', '2020-03-27', 1000.00);
+insert into fattura values(13, 'IT1234567890000001234567897', '2020-04-27', 1500.00);
+insert into fattura values(15, 'IT0987654321000000004354657', '2021-08-01', 200.00);
+insert into fattura values(16, 'IT0987654321000000004354657', '2021-09-15', 300.00);
+insert into fattura values(19, 'IT0976543821000000001234567', '2021-05-22', 1000.00);
+insert into fattura values(22, 'IT0976543821000000001234567', '2021-06-29', 3000.00);
+
+INSERIMENTO COMPENSI
+insert into compenso values(12, 'acconto denuncia aggr. pubblico ufficiale', 1000.00);
+insert into compenso values(13, 'saldo denuncia aggr. pubblico ufficiale', 1500.00);
+insert into compenso values(15, 'acconto mancata consegna', 200.00);
+insert into compenso values(16, 'saldo mancata consegna', 300.00);
+insert into compenso values(19, 'acconto merce smarrita', 1000.00);
+insert into compenso values(22, 'saldo merce smarrita', 3000.00);
 
