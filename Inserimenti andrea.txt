@@ -1,0 +1,24 @@
+INSERIMENTO FALDONI
+
+insert into faldone values (1, '2019-01-01', '2019-12-31');
+insert into faldone values (2, '2020-01-01', '2020-12-31');
+insert into faldone values (3, '2021-01-01', '2021-12-31');
+
+INSERIMENTO FALDONI NEGLI SCAFFALI
+
+insert into posizione values(1,1);
+insert into posizione values(1,2);
+insert into posizione values(1,3);
+
+INSERIMENTO IN REFERENZA
+
+insert into referenza values(1, 'risarcimento mancata consegna ordine', '2021-08-01');
+insert into referenza values(8, 'risarcimento merce smarrita', '2021-05-22');
+insert into referenza values(22, 'denuncia aggressione a pubblico ufficiale', '2020-03-27');
+
+INSERIMENTO FASCICOLI NEI FALDONI
+
+insert into inserimento values (3,1);
+insert into inserimento values (3,8);
+insert into inserimento values (2,22);
+

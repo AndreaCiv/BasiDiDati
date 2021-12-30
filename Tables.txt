@@ -78,3 +78,11 @@ create table Compenso(
     -> importo decimal(8,2) not null,
     -> primary key (numeroFattura, descrizione),
     -> foreign key (numeroFattura) references Fattura(numeroFattura));
+
+create table referenza( 
+idFascicolo smallint unsigned not null, 
+oggettoContratto varchar(100) not null, 
+dataContratto date not null, 
+primary key(idFascicolo, oggettoContratto, dataContratto), 
+foreign key (idFascicolo) references Fascicolo(codiceIdentificativo) on update cascade, 
+foreign key (oggettoContratto, dataContratto) references Contratto(oggetto, data) on update cascade);
