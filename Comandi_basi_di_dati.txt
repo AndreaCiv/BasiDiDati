@@ -105,3 +105,9 @@ insert into compenso values(16, 'saldo mancata consegna', 300.00);
 insert into compenso values(19, 'acconto merce smarrita', 1000.00);
 insert into compenso values(22, 'saldo merce smarrita', 3000.00);
 
+INSERIMENTO FASCICOLI
+insert into fascicolo values(1, '2021', 'Di Pietro', 'amministrativo', 'si');
+insert into fascicolo values(8, '2021', 'Caselli', 'amministrativo', 'si');
+insert into fascicolo values(22, '2020', 'Colombo', 'penale', 'si');
+
+
