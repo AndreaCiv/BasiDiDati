@@ -22,3 +22,13 @@ insert into inserimento values (3,1);
 insert into inserimento values (3,8);
 insert into inserimento values (2,22);
 
+INSERIMENTO DOCUEMNTI
+insert into documento values('copia dell ordine', 1, 'copia dell ordine effettuato del quale si richiede il risarcimento', null);insert into documento values('risarcimento', 1, 'richiesta di risarcimento', null);
+insert into documento values ('sentenza', 1, 'sentenza del giudice: risarcimento approvato','19827529');
+insert into documento values('denuncia', 22, 'denuncia sporta contro il cliente', '18493768');
+insert into documento values('merce', 8, 'dichiarazione della merce smarrita con relativi valori', null);
+
+
+
+
+
