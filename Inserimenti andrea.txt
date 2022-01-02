@@ -34,7 +34,7 @@ insert into clientefisico values('CJDIOR879JI23NI5', 'paolo', 'di giovanni', '19
 INSERIMENTO CLIENTE GIURIDICO
 insert into clientegiuridico values ('19406864209', 'Fincantieri', 'Ancona', 'Fincantieri s.p.a.', 'lungomare vanvitelli', 'Ancona', 80, 60121, '0715951', 'fincantieri@fincantieri.it', 0);
 
-INSERIMENTO CONTRATTO
+INSERIMENTO CONTRATTO 1
 insert into contratto values('processo incidente auto', '2019-06-23', 'cliente', 'Franco Bianchi', 6000, 'Ancona', 300.00, 300.00);
 update clientefisico set numerocontratti=1 where codicefiscale='CJDIOR879JI23NI5';
 insert into stipulazioneclientefisico values ('processo incidente auto', '2019-06-23', 'NREGLI80R63G482C', 'CJDIOR879JI23NI5');
@@ -50,5 +50,16 @@ insert into documento values ('sentenza', 145, 'sentenza del giudice: colap ad e
 alter table documento modify column nome varchar(40); #modifica numero caratteri nome documento, prima era troppo corto
 insert into documento values ('dichiarazioni cliente', 145, 'dichiarazioni del cliente riguardo l incidente', null);
 
+INSERIMENTO CONTRATTO 2
+insert into contratto values ('nave non conforme alle norme', '2020-01-15', 'Costa Crociere s.p.a.', 'cliente', 100000, 'Ancona', 5000.00, 10000.00);
+insert into stipulazioneclientegiuridico values ('nave non conforme alle norme', '2020-01-15', 'VRDSMN67M54H456K', '19406864209');
+insert into fattura values (105, 'IT39BDJK38495LIUTBHJ2019876', '2020-01-20', 5000.00);insert into fattura values (110, 'IT39BDJK38495LIUTBHJ2019876', '2020-12-20', 10000.00);
+insert into pagamento values('nave non conforme alle norme', '2020-01-15', 105),('nave non conforme alle norme', '2020-01-15', 110);
+insert into compenso values (105, 'spese avviamento causa', 4000.00), (105, 'compenso avvocato', 800.00), (105, 'tasse', 200.00);
+insert into compenso values (110, 'spese processuali', 2000.00), (110, 'tasse', 2000.00), (110, 'pagamento servizio assistenza legale', 5000.00), (110, 'pagamento consulenze esterne', 1000.00);
+insert into fascicolo values (150, '2020', 'Colleluori', 'civile', 'si');
+insert into referenza values (150, 'nave non conforme alle norme', '2020-01-15');
+insert into inserimento values (2, 150);
+insert into documento values ('contratto costruzione nave', 150, 'contratto di costruzione della nave stipulato tra le parti', null), ('verifica specifiche nave', 150, 'verifica delle specifiche della nave effettuata da consulente esterno', null), ('prima udienza', 150, 'verbale della prima udienza del processo', '09753856'), ('seconda udienza', 150, 'verbale della seconda udienza del processo', '73842123'), ('sentenza', 150, 'sentenza del giudice: cliente costretto ad apportare modifiche in modo da rendere la nave conforme', '10987261');
 
 
