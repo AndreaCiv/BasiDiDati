@@ -28,7 +28,27 @@ insert into documento values ('sentenza', 1, 'sentenza del giudice: risarcimento
 insert into documento values('denuncia', 22, 'denuncia sporta contro il cliente', '18493768');
 insert into documento values('merce', 8, 'dichiarazione della merce smarrita con relativi valori', null);
 
+INSERIMENTO CLIENTE FISICO
+insert into clientefisico values('CJDIOR879JI23NI5', 'paolo', 'di giovanni', '1983-05-09', 'ancona', 'ancona', 'piazza diaz', 35, 60123, 'paolo@digiovanni.it', '3986758489', 0);
 
+INSERIMENTO CLIENTE GIURIDICO
+insert into clientegiuridico values ('19406864209', 'Fincantieri', 'Ancona', 'Fincantieri s.p.a.', 'lungomare vanvitelli', 'Ancona', 80, 60121, '0715951', 'fincantieri@fincantieri.it', 0);
+
+INSERIMENTO CONTRATTO
+insert into contratto values('processo incidente auto', '2019-06-23', 'cliente', 'Franco Bianchi', 6000, 'Ancona', 300.00, 300.00);
+update clientefisico set numerocontratti=1 where codicefiscale='CJDIOR879JI23NI5';
+insert into stipulazioneclientefisico values ('processo incidente auto', '2019-06-23', 'NREGLI80R63G482C', 'CJDIOR879JI23NI5');
+insert into fattura values (100, 'IT39CHIEJ39607498J7H2SS4567', '2019-06-24', 300.00);
+insert into pagamento values ('processo incidente auto', '2019-06-23', 100);
+insert into compenso values (100, 'spese avviamento processuale', 200.00);
+insert into compenso values (100, 'acconto per avvocato', 100.00);
+insert into fascicolo values(145, 2019, 'Di Camillo', 'civile', 'si');
+insert into referenza values (145, 'processo incidente auto', '2019-06-23');
+insert into inserimento values (1, 145);
+insert into documento values ('cid', 145, 'copia del cid dell incidente', null);
+insert into documento values ('sentenza', 145, 'sentenza del giudice: colap ad entrambe le parti', '72453891');
+alter table documento modify column nome varchar(40); #modifica numero caratteri nome documento, prima era troppo corto
+insert into documento values ('dichiarazioni cliente', 145, 'dichiarazioni del cliente riguardo l incidente', null);
 
 
 
