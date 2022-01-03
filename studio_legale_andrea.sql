@@ -43,7 +43,7 @@ CREATE TABLE `avvocato` (
 
 LOCK TABLES `avvocato` WRITE;
 /*!40000 ALTER TABLE `avvocato` DISABLE KEYS */;
-INSERT INTO `avvocato` VALUES ('RSSGBR78M56G569X','Gabriele','Rossi','1981-03-06','gabriele@rossi.it','gabriele@rossi.pec.it','89762675910','904875C78',100000),('VRDSMN67M54H456K','Simone','Verdi','1975-03-21','simone@verdi.it','simone@verdi.pec.it','78462985624','ALD457890',100000);
+INSERT INTO `avvocato` VALUES ('NREGLI80R63G482C','Giulia','Neri','1980-10-25','giulia@neri.it','giulia@neri.pec.it','12340987543','4352GUE123',100000),('RSSGBR78M56G569X','Gabriele','Rossi','1981-03-06','gabriele@rossi.it','gabriele@rossi.pec.it','89762675910','904875C78',100000),('VRDSMN67M54H456K','Simone','Verdi','1975-03-21','simone@verdi.it','simone@verdi.pec.it','78462985624','ALD457890',100000);
 /*!40000 ALTER TABLE `avvocato` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -77,7 +77,7 @@ CREATE TABLE `clientefisico` (
 
 LOCK TABLES `clientefisico` WRITE;
 /*!40000 ALTER TABLE `clientefisico` DISABLE KEYS */;
-INSERT INTO `clientefisico` VALUES ('BNCGVN56M96E435J','Giovanni','Bianchi','1984-08-22','Pescara','Pescara','Viale bovio',89,65121,'giovanni@bianchi.it','3925874671',1),('RSSCRL78M87G141P','Carlo','Rossi','1976-05-12','Teramo','Alba Adriatica','Via 1 Maggio',15,69086,'carlo@rossi.it','3997658713',0);
+INSERT INTO `clientefisico` VALUES ('BNCGVN56M96E435J','Giovanni','Bianchi','1984-08-22','Pescara','Pescara','Viale bovio',89,65121,'giovanni@bianchi.it','3925874671',1),('CJDIOR879JI23NI5','paolo','di giovanni','1983-05-09','ancona','ancona','piazza diaz',35,60123,'paolo@digiovanni.it','3986758489',1),('RSSCRL78M87G141P','Carlo','Rossi','1976-05-12','Teramo','Alba Adriatica','Via 1 Maggio',15,69086,'carlo@rossi.it','3997658713',0);
 /*!40000 ALTER TABLE `clientefisico` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,7 +111,7 @@ CREATE TABLE `clientegiuridico` (
 
 LOCK TABLES `clientegiuridico` WRITE;
 /*!40000 ALTER TABLE `clientegiuridico` DISABLE KEYS */;
-INSERT INTO `clientegiuridico` VALUES ('09758637854','Cartolibreria','Teramo','Cartolibreria','Piazza plebiscito','Giulianova',NULL,64021,'08764567982','cartolibreria@cartolibreria.it',1),('56879579081','Cantina sociale Ortona','Chieti','Cantina sociale','Via Roma','Ortona',50,66026,'0851234567','cantina@sociale.it',0),('68739487561','Autotrasporti s.r.l.','Pescara','Autotrasporti','Via della libertà','Montesilvano',30,65015,'08713435687','autotrasporti@autotrasporti.com',1);
+INSERT INTO `clientegiuridico` VALUES ('09758637854','Cartolibreria','Teramo','Cartolibreria','Piazza plebiscito','Giulianova',NULL,64021,'08764567982','cartolibreria@cartolibreria.it',1),('19406864209','Fincantieri','Ancona','Fincantieri s.p.a.','lungomare vanvitelli','Ancona',80,60121,'0715951','fincantieri@fincantieri.it',0),('56879579081','Cantina sociale Ortona','Chieti','Cantina sociale','Via Roma','Ortona',50,66026,'0851234567','cantina@sociale.it',0),('68739487561','Autotrasporti s.r.l.','Pescara','Autotrasporti','Via della libertà','Montesilvano',30,65015,'08713435687','autotrasporti@autotrasporti.com',1);
 /*!40000 ALTER TABLE `clientegiuridico` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,6 +137,7 @@ CREATE TABLE `Compenso` (
 
 LOCK TABLES `Compenso` WRITE;
 /*!40000 ALTER TABLE `Compenso` DISABLE KEYS */;
+INSERT INTO `Compenso` VALUES (100,'acconto per avvocato',100.00),(100,'spese avviamento processuale',200.00),(105,'compenso avvocato',800.00),(105,'spese avviamento causa',4000.00),(105,'tasse',200.00),(110,'pagamento consulenze esterne',1000.00),(110,'pagamento servizio assistenza legale',5000.00),(110,'spese processuali',2000.00),(110,'tasse',2000.00);
 /*!40000 ALTER TABLE `Compenso` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -167,19 +168,19 @@ CREATE TABLE `Contratto` (
 
 LOCK TABLES `Contratto` WRITE;
 /*!40000 ALTER TABLE `Contratto` DISABLE KEYS */;
-INSERT INTO `Contratto` VALUES ('denuncia aggressione a pubblico ufficiale','2020-03-27','comando polizia Pescara','cliente',10000,'Pescara',1000.00,1500.00),('risarcimento mancata consegna ordine','2021-08-01','Luca Bianchi','cliente',6000,'Giulianova',200.00,300.00),('risarcimento merce smarrita','2021-05-22','cliente','Bartolini s.p.a.',50000,'Pescara',1000.00,3000.00);
+INSERT INTO `Contratto` VALUES ('denuncia aggressione a pubblico ufficiale','2020-03-27','comando polizia Pescara','cliente',10000,'Pescara',1000.00,1500.00),('nave non conforme alle norme','2020-01-15','Costa Crociere s.p.a.','cliente',100000,'Ancona',5000.00,10000.00),('processo incidente auto','2019-06-23','cliente','Franco Bianchi',6000,'Ancona',300.00,300.00),('risarcimento mancata consegna ordine','2021-08-01','Luca Bianchi','cliente',6000,'Giulianova',200.00,300.00),('risarcimento merce smarrita','2021-05-22','cliente','Bartolini s.p.a.',50000,'Pescara',1000.00,3000.00);
 /*!40000 ALTER TABLE `Contratto` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Documento`
+-- Table structure for table `documento`
 --
 
-DROP TABLE IF EXISTS `Documento`;
+DROP TABLE IF EXISTS `documento`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Documento` (
-  `nome` varchar(20) NOT NULL,
+CREATE TABLE `documento` (
+  `nome` varchar(40) NOT NULL,
   `idFascicolo` smallint unsigned NOT NULL,
   `descrizione` varchar(140) DEFAULT NULL,
   `numeroProtocollo` char(8) DEFAULT NULL,
@@ -190,12 +191,13 @@ CREATE TABLE `Documento` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Documento`
+-- Dumping data for table `documento`
 --
 
-LOCK TABLES `Documento` WRITE;
-/*!40000 ALTER TABLE `Documento` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Documento` ENABLE KEYS */;
+LOCK TABLES `documento` WRITE;
+/*!40000 ALTER TABLE `documento` DISABLE KEYS */;
+INSERT INTO `documento` VALUES ('cid',145,'copia del cid dell incidente',NULL),('contratto costruzione nave',150,'contratto di costruzione della nave stipulato tra le parti',NULL),('copia dell ordine',1,'copia dell ordine effettuato del quale si richiede il risarcimento',NULL),('denuncia',22,'denuncia sporta contro il cliente','18493768'),('dichiarazioni cliente',145,'dichiarazioni del cliente riguardo l incidente',NULL),('merce',8,'dichiarazione della merce smarrita con relativi valori',NULL),('prima udienza',150,'verbale della prima udienza del processo','09753856'),('risarcimento',1,'richiesta di risarcimento',NULL),('seconda udienza',150,'verbale della seconda udienza del processo','73842123'),('sentenza',1,'sentenza del giudice: risarcimento approvato','19827529'),('sentenza',145,'sentenza del giudice: colap ad entrambe le parti','72453891'),('sentenza',150,'sentenza del giudice: cliente costretto ad apportare modifiche in modo da rendere la nave conforme','10987261'),('verifica specifiche nave',150,'verifica delle specifiche della nave effettuata da consulente esterno',NULL);
+/*!40000 ALTER TABLE `documento` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -219,6 +221,7 @@ CREATE TABLE `Faldone` (
 
 LOCK TABLES `Faldone` WRITE;
 /*!40000 ALTER TABLE `Faldone` DISABLE KEYS */;
+INSERT INTO `Faldone` VALUES (1,'2019-01-01','2019-12-31'),(2,'2020-01-01','2020-12-31'),(3,'2021-01-01','2021-12-31');
 /*!40000 ALTER TABLE `Faldone` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -245,6 +248,7 @@ CREATE TABLE `Fascicolo` (
 
 LOCK TABLES `Fascicolo` WRITE;
 /*!40000 ALTER TABLE `Fascicolo` DISABLE KEYS */;
+INSERT INTO `Fascicolo` VALUES (1,2021,'Di Pietro','amministrativo','si'),(8,2021,'Caselli','amministrativo','si'),(22,2020,'Colombo','penale','si'),(145,2019,'Di Camillo','civile','si'),(150,2020,'Colleluori','civile','si');
 /*!40000 ALTER TABLE `Fascicolo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -270,6 +274,7 @@ CREATE TABLE `Fattura` (
 
 LOCK TABLES `Fattura` WRITE;
 /*!40000 ALTER TABLE `Fattura` DISABLE KEYS */;
+INSERT INTO `Fattura` VALUES (100,'IT39CHIEJ39607498J7H2SS4567','2019-06-24',300.00),(105,'IT39BDJK38495LIUTBHJ2019876','2020-01-20',5000.00),(110,'IT39BDJK38495LIUTBHJ2019876','2020-12-20',10000.00);
 /*!40000 ALTER TABLE `Fattura` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -296,6 +301,7 @@ CREATE TABLE `Inserimento` (
 
 LOCK TABLES `Inserimento` WRITE;
 /*!40000 ALTER TABLE `Inserimento` DISABLE KEYS */;
+INSERT INTO `Inserimento` VALUES (3,1),(3,8),(2,22),(1,145),(2,150);
 /*!40000 ALTER TABLE `Inserimento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -323,6 +329,7 @@ CREATE TABLE `Pagamento` (
 
 LOCK TABLES `Pagamento` WRITE;
 /*!40000 ALTER TABLE `Pagamento` DISABLE KEYS */;
+INSERT INTO `Pagamento` VALUES ('processo incidente auto','2019-06-23',100),('nave non conforme alle norme','2020-01-15',105),('nave non conforme alle norme','2020-01-15',110);
 /*!40000 ALTER TABLE `Pagamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -349,7 +356,36 @@ CREATE TABLE `Posizione` (
 
 LOCK TABLES `Posizione` WRITE;
 /*!40000 ALTER TABLE `Posizione` DISABLE KEYS */;
+INSERT INTO `Posizione` VALUES (1,1),(1,2),(1,3);
 /*!40000 ALTER TABLE `Posizione` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `referenza`
+--
+
+DROP TABLE IF EXISTS `referenza`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `referenza` (
+  `idFascicolo` smallint unsigned NOT NULL,
+  `oggettoContratto` varchar(100) NOT NULL,
+  `dataContratto` date NOT NULL,
+  PRIMARY KEY (`idFascicolo`,`oggettoContratto`,`dataContratto`),
+  KEY `oggettoContratto` (`oggettoContratto`,`dataContratto`),
+  CONSTRAINT `referenza_ibfk_1` FOREIGN KEY (`idFascicolo`) REFERENCES `Fascicolo` (`codiceIdentificativo`) ON UPDATE CASCADE,
+  CONSTRAINT `referenza_ibfk_2` FOREIGN KEY (`oggettoContratto`, `dataContratto`) REFERENCES `Contratto` (`oggetto`, `data`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `referenza`
+--
+
+LOCK TABLES `referenza` WRITE;
+/*!40000 ALTER TABLE `referenza` DISABLE KEYS */;
+INSERT INTO `referenza` VALUES (22,'denuncia aggressione a pubblico ufficiale','2020-03-27'),(150,'nave non conforme alle norme','2020-01-15'),(145,'processo incidente auto','2019-06-23'),(1,'risarcimento mancata consegna ordine','2021-08-01'),(8,'risarcimento merce smarrita','2021-05-22');
+/*!40000 ALTER TABLE `referenza` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -402,7 +438,7 @@ CREATE TABLE `stipulazioneClienteFisico` (
 
 LOCK TABLES `stipulazioneClienteFisico` WRITE;
 /*!40000 ALTER TABLE `stipulazioneClienteFisico` DISABLE KEYS */;
-INSERT INTO `stipulazioneClienteFisico` VALUES ('denuncia aggressione a pubblico ufficiale','2020-03-27','VRDSMN67M54H456K','BNCGVN56M96E435J');
+INSERT INTO `stipulazioneClienteFisico` VALUES ('processo incidente auto','2019-06-23','NREGLI80R63G482C','CJDIOR879JI23NI5'),('denuncia aggressione a pubblico ufficiale','2020-03-27','VRDSMN67M54H456K','BNCGVN56M96E435J');
 /*!40000 ALTER TABLE `stipulazioneClienteFisico` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -433,7 +469,7 @@ CREATE TABLE `stipulazioneclientegiuridico` (
 
 LOCK TABLES `stipulazioneclientegiuridico` WRITE;
 /*!40000 ALTER TABLE `stipulazioneclientegiuridico` DISABLE KEYS */;
-INSERT INTO `stipulazioneclientegiuridico` VALUES ('risarcimento mancata consegna ordine','2021-08-01','RSSGBR78M56G569X','09758637854'),('risarcimento merce smarrita','2021-05-22','VRDSMN67M54H456K','68739487561');
+INSERT INTO `stipulazioneclientegiuridico` VALUES ('risarcimento mancata consegna ordine','2021-08-01','RSSGBR78M56G569X','09758637854'),('nave non conforme alle norme','2020-01-15','VRDSMN67M54H456K','19406864209'),('risarcimento merce smarrita','2021-05-22','VRDSMN67M54H456K','68739487561');
 /*!40000 ALTER TABLE `stipulazioneclientegiuridico` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -446,4 +482,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-30 10:00:50
+-- Dump completed on 2022-01-03 15:14:02
