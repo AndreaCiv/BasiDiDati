@@ -306,16 +306,17 @@ INSERT INTO `Inserimento` VALUES (3,1),(3,8),(2,22),(1,145),(2,150);
 UNLOCK TABLES;
 
 --
--- Table structure for table `Pagamento`
+-- Table structure for table `pagamento`
 --
 
-DROP TABLE IF EXISTS `Pagamento`;
+DROP TABLE IF EXISTS `pagamento`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Pagamento` (
+CREATE TABLE `pagamento` (
   `oggettoContratto` varchar(100) NOT NULL,
   `dataContratto` date NOT NULL,
   `numeroFattura` smallint unsigned NOT NULL,
+  `tipo` enum('acconto','saldo') NOT NULL,
   PRIMARY KEY (`oggettoContratto`,`dataContratto`,`numeroFattura`),
   KEY `numeroFattura` (`numeroFattura`),
   CONSTRAINT `pagamento_ibfk_1` FOREIGN KEY (`oggettoContratto`, `dataContratto`) REFERENCES `Contratto` (`oggetto`, `data`) ON UPDATE CASCADE,
@@ -324,13 +325,13 @@ CREATE TABLE `Pagamento` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Pagamento`
+-- Dumping data for table `pagamento`
 --
 
-LOCK TABLES `Pagamento` WRITE;
-/*!40000 ALTER TABLE `Pagamento` DISABLE KEYS */;
-INSERT INTO `Pagamento` VALUES ('processo incidente auto','2019-06-23',100),('nave non conforme alle norme','2020-01-15',105),('nave non conforme alle norme','2020-01-15',110);
-/*!40000 ALTER TABLE `Pagamento` ENABLE KEYS */;
+LOCK TABLES `pagamento` WRITE;
+/*!40000 ALTER TABLE `pagamento` DISABLE KEYS */;
+INSERT INTO `pagamento` VALUES ('nave non conforme alle norme','2020-01-15',105,'acconto'),('nave non conforme alle norme','2020-01-15',110,'saldo'),('processo incidente auto','2019-06-23',100,'acconto');
+/*!40000 ALTER TABLE `pagamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -482,4 +483,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-03 15:14:02
+-- Dump completed on 2022-01-04 12:07:04

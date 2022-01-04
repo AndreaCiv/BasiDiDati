@@ -62,4 +62,15 @@ insert into referenza values (150, 'nave non conforme alle norme', '2020-01-15')
 insert into inserimento values (2, 150);
 insert into documento values ('contratto costruzione nave', 150, 'contratto di costruzione della nave stipulato tra le parti', null), ('verifica specifiche nave', 150, 'verifica delle specifiche della nave effettuata da consulente esterno', null), ('prima udienza', 150, 'verbale della prima udienza del processo', '09753856'), ('seconda udienza', 150, 'verbale della seconda udienza del processo', '73842123'), ('sentenza', 150, 'sentenza del giudice: cliente costretto ad apportare modifiche in modo da rendere la nave conforme', '10987261');
 
+-----------------------------------------------------------------------------------------------------
+AGGIUNTA ATTRIBUTO TIPO A PAGAMENTO
+alter table pagamento add column tipo enum('acconto', 'saldo') not null;
+
+NB: IL NUOVO ATTRIBUTO SARà IMPOSTATO AD ACCONTO PER TUTTE LE RIGHE, BISOGNA MODIFICARLO PER LE FATTURE CHE SONO SALDO CON GLI UPDATE
+
+HO MODIFICATO LE QUERY DELLA VERIFICA DI ACCONTO E SALDO CON IL NUOVO ATTRIBUTO, PROVALE ANCHE TU E VEDI SE FUNZIONANO
+
+IL CHECK SU REFERENZA CHE IMPEDISCE DI INSERIRE UN FASCICOLO SE NON è STATO PAGATO L'ACCONTO NON PUò ESSERE MESSO PERCHÉ I CHECK POSSONO AGIRE SOLO SU ATTRIBUTI DELLA TABELLA STESSA, NON QUELLI DI ALTRE
+
+HO AGGIORNATO ANCHE IL DUMP SU GITHUB
 
