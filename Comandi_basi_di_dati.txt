@@ -97,17 +97,18 @@ insert into fattura values(16, 'IT0987654321000000004354657', '2021-09-15', 300.
 insert into fattura values(19, 'IT0976543821000000001234567', '2021-05-22', 1000.00);
 insert into fattura values(22, 'IT0976543821000000001234567', '2021-06-29', 3000.00);
 
-INSERIMENTO COMPENSI
-insert into compenso values(12, 'acconto denuncia aggr. pubblico ufficiale', 1000.00);
-insert into compenso values(13, 'saldo denuncia aggr. pubblico ufficiale', 1500.00);
-insert into compenso values(15, 'acconto mancata consegna', 200.00);
-insert into compenso values(16, 'saldo mancata consegna', 300.00);
-insert into compenso values(19, 'acconto merce smarrita', 1000.00);
-insert into compenso values(22, 'saldo merce smarrita', 3000.00);
+INSERIMENTO PAGAMENTI
+insert into pagamento values ('denuncia aggressione a pubblico ufficiale','2020-03-27', 12, 'acconto');
+insert into pagamento values ('denuncia aggressione a pubblico ufficiale','2020-03-27', 13, 'saldo');
+insert into pagamento values ('risarcimento mancata consegna ordine','2021-08-01', 15, 'acconto');
+insert into pagamento values ('risarcimento mancata consegna ordine','2021-08-01', 16, 'saldo');
+insert into pagamento values ('risarcimento merce smarrita','2021-05-22', 19, 'acconto');
+insert into pagamento values ('risarcimento merce smarrita','2021-05-22', 22, 'saldo');
 
 INSERIMENTO FASCICOLI
 insert into fascicolo values(1, '2021', 'Di Pietro', 'amministrativo', 'si');
 insert into fascicolo values(8, '2021', 'Caselli', 'amministrativo', 'si');
 insert into fascicolo values(22, '2020', 'Colombo', 'penale', 'si');
+
 
 
