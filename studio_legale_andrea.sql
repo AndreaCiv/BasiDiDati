@@ -274,7 +274,7 @@ CREATE TABLE `Fattura` (
 
 LOCK TABLES `Fattura` WRITE;
 /*!40000 ALTER TABLE `Fattura` DISABLE KEYS */;
-INSERT INTO `Fattura` VALUES (100,'IT39CHIEJ39607498J7H2SS4567','2019-06-24',300.00),(105,'IT39BDJK38495LIUTBHJ2019876','2020-01-20',5000.00),(110,'IT39BDJK38495LIUTBHJ2019876','2020-12-20',10000.00);
+INSERT INTO `Fattura` VALUES (12,'IT1234567890000001234567897','2020-03-27',1000.00),(13,'IT1234567890000001234567897','2020-04-27',1500.00),(15,'IT0987654321000000004354657','2021-08-01',200.00),(16,'IT0987654321000000004354657','2021-09-15',300.00),(19,'IT0976543821000000001234567','2021-05-22',1000.00),(22,'IT0976543821000000001234567','2021-06-29',3000.00),(100,'IT39CHIEJ39607498J7H2SS4567','2019-06-24',300.00),(105,'IT39BDJK38495LIUTBHJ2019876','2020-01-20',5000.00),(110,'IT39BDJK38495LIUTBHJ2019876','2020-12-20',10000.00);
 /*!40000 ALTER TABLE `Fattura` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -330,7 +330,7 @@ CREATE TABLE `pagamento` (
 
 LOCK TABLES `pagamento` WRITE;
 /*!40000 ALTER TABLE `pagamento` DISABLE KEYS */;
-INSERT INTO `pagamento` VALUES ('nave non conforme alle norme','2020-01-15',105,'acconto'),('nave non conforme alle norme','2020-01-15',110,'saldo'),('processo incidente auto','2019-06-23',100,'acconto');
+INSERT INTO `pagamento` VALUES ('denuncia aggressione a pubblico ufficiale','2020-03-27',12,'acconto'),('denuncia aggressione a pubblico ufficiale','2020-03-27',13,'saldo'),('nave non conforme alle norme','2020-01-15',105,'acconto'),('nave non conforme alle norme','2020-01-15',110,'saldo'),('processo incidente auto','2019-06-23',100,'acconto'),('risarcimento mancata consegna ordine','2021-08-01',15,'acconto'),('risarcimento mancata consegna ordine','2021-08-01',16,'saldo'),('risarcimento merce smarrita','2021-05-22',19,'acconto'),('risarcimento merce smarrita','2021-05-22',22,'saldo');
 /*!40000 ALTER TABLE `pagamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -483,4 +483,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-04 12:07:04
+-- Dump completed on 2022-01-08 16:48:32
